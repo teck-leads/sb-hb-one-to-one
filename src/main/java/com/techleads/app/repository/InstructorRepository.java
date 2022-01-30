@@ -13,7 +13,7 @@ import com.techleads.app.util.HibernateUtil;
 @Repository
 public class InstructorRepository {
 
-	public void saveInstructor(Instructor instructor, InstructorDetail instructorDetail) {
+	public void saveInstructor(Instructor instructor) {
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
 			// start a transaction
@@ -21,7 +21,7 @@ public class InstructorRepository {
 			// save the student object
 			// This will also save the details object because of CascadeType.ALL
 			Serializable save = session.save(instructor);
-			System.out.println(save.getClass() + " saved!");
+			System.out.println(save.getClass() + " Instructor and detail are saved!");
 			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
@@ -72,6 +72,30 @@ public class InstructorRepository {
 			e.printStackTrace();
 		}
 		return instructor;
+	}
+	
+	
+	public void updateInstructor(Integer id) {
+		Transaction transaction = null;
+		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+			// start a transaction
+			transaction = session.beginTransaction();
+			// save the student object
+			// This will also save the details object because of CascadeType.ALL
+//			String SQL="update instructor set instructor_detail_id = "+id+" where id = 8 or id = 9";
+			String SQL="update instructor set instructor_detail_id = 9 where id = 8 or id = 9";
+//			int executeUpdate = session.createQuery("update student set email='emp@tm.com'").executeUpdate();
+			int executeUpdate = session.createQuery(SQL).executeUpdate();
+			System.out.println(executeUpdate+" Instructor and detail are saved!");
+			// commit transaction
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
+
 	}
 
 }

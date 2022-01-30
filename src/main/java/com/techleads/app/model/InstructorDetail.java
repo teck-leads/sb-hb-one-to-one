@@ -5,10 +5,13 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import org.hibernate.engine.jdbc.env.spi.IdentifierCaseStrategy;
 
 @Entity(name = "instructor_detail")
 public class InstructorDetail implements Serializable {
@@ -25,7 +28,9 @@ public class InstructorDetail implements Serializable {
 	@Column(name = "hobby")
 	private String hobby;
 
-	@OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "instructorDetail", cascade = {
+			CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+			})
 	private Instructor instructor;
 
 	public InstructorDetail() {

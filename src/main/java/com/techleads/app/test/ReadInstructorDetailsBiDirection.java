@@ -7,7 +7,7 @@ public class ReadInstructorDetailsBiDirection {
 	private static InstructorDetailRepository instructorDetailRepository = new InstructorDetailRepository();
 
 	public static void main(String[] args) {
-		InstructorDetail findInstructorDetailsById = instructorDetailRepository.findInstructorDetailsById(3);
+		InstructorDetail findInstructorDetailsById = instructorDetailRepository.findInstructorDetailsById(7);
 		System.out.println(findInstructorDetailsById);
 		System.out.println("Instructor details " + findInstructorDetailsById.getInstructor());
 

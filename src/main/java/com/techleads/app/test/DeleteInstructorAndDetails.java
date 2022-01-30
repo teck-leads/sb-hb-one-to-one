@@ -2,12 +2,12 @@ package com.techleads.app.test;
 
 import com.techleads.app.repository.InstructorRepository;
 
-public class Delete {
+public class DeleteInstructorAndDetails {
 	private static InstructorRepository instructorRepository=new InstructorRepository();
 	public static void main(String[] args) {
 		
 		
-		instructorRepository.deleteInstructor(2);
+		instructorRepository.deleteInstructor(6);
 
 	}
 
