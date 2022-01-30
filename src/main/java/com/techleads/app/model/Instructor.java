@@ -24,7 +24,7 @@ public class Instructor {
 	
 
 	@OneToOne(cascade = CascadeType.ALL)//This will also save the details object because of CascadeType.ALL
-	@JoinColumn(name = "instructor_detail_id")
+	@JoinColumn(name = "instructor_detail_id") // column name in Instructor table 
 	private InstructorDetail instructorDetail;
 
 	public Instructor() {
@@ -78,6 +78,13 @@ public class Instructor {
 	public void setInstructorDetail(InstructorDetail instructorDetail) {
 		this.instructorDetail = instructorDetail;
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "Instructor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+//				+ "]";
+//	}
 
 
 	@Override

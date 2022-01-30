@@ -56,4 +56,22 @@ public class InstructorRepository {
 		}
 	}
 
+	public Instructor findInstructorById(Integer id) {
+		Instructor instructor = null;
+		Transaction transaction = null;
+		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+			// start a transaction
+			transaction = session.beginTransaction();
+			instructor = session.get(Instructor.class, id);
+			// commit transaction
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
+		return instructor;
+	}
+
 }
