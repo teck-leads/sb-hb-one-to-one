@@ -43,7 +43,7 @@ public class InstructorRepository {
 			System.out.println(instructor);
 			if (null != instructor) {
 				System.out.println("deleting now");
-				session.delete(instructor);// This will also save the details object because of CascadeType.ALL
+				session.delete(instructor);// This will also delete the Instructordetails object because of CascadeType.ALL
 			}
 
 			// commit transaction
