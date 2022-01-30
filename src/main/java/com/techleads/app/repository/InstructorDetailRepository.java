@@ -1,11 +1,8 @@
 package com.techleads.app.repository;
 
-import java.io.Serializable;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.techleads.app.model.Instructor;
 import com.techleads.app.model.InstructorDetail;
 import com.techleads.app.util.HibernateUtil;
 
@@ -70,7 +67,11 @@ public class InstructorDetailRepository {
 			if (null != instructordtl) {
 				System.out.println("deleting now");
 				//deleted object would be re-saved by cascade (remove deleted object from associations): [com.techleads.app.model.InstructorDetail#8]
-				instructordtl.getInstructor().setInstructorDetail(null);
+				
+				
+				if(null!=instructordtl.getInstructor()) {
+					instructordtl.getInstructor().setInstructorDetail(null);
+				}
 				
 				session.delete(instructordtl);// This will also delete the Instructor object because of CascadeType.ALL
 			}

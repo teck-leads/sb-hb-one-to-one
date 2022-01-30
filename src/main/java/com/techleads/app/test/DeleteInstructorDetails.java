@@ -9,7 +9,7 @@ public class DeleteInstructorDetails {
 //		InstructorDetail findInstructorDetailsById = instructorDetailRepository.findInstructorDetailsById(8);
 //		System.out.println(findInstructorDetailsById);
 
-		instructorDetailRepository.deleteInstructorDetail(8);
+		instructorDetailRepository.deleteInstructorDetail(11);
 	}
 
 }
